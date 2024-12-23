@@ -1,0 +1,11 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "workspaces": [
+    "client"
+  ],
+  "devDependencies": {
+    "vite": "^4.0.0",
+    "typescript": "^4.0.0"
+  }
+}
