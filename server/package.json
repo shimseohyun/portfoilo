@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "heroku-postbuild": "npm install && npm run build"
+    "build": "tsc"
   },
   "dependencies": {
     "cors": "^2.8.5",

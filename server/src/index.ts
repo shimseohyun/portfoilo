@@ -1,7 +1,10 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 
-const PORT = process.env.PORT || 5001;
+dotenv.config();
+const PORT = process.env.PORT;
+
 class App {
   public application: express.Application;
   constructor() {
