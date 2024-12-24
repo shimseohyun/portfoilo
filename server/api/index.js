@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 
+dotenv.config();
+
 const app = express();
 
 app.use(
@@ -9,7 +11,7 @@ app.use(
   })
 );
 
-const fetchNotionData = async (notionToken, notionDatabaseID) => {
+const fetchNotionData = async () => {
   const url = `https://api.notion.com/v1/databases/${notionDatabaseID}/query`;
 
   try {
@@ -32,17 +34,12 @@ const fetchNotionData = async (notionToken, notionDatabaseID) => {
   }
 };
 
-app.get("/api/notion/databases", async (req, res) => {
-  const { notionToken, notionDatabaseID } = req.query;
-
-  if (!notionToken || !notionDatabaseID) {
-    return res
-      .status(400)
-      .json({ message: "notionToken and notionDatabaseID are required" });
-  }
+app.post("/api/notion/databases", async (req, res) => {
+  const notionToken = process.env.NOTION_API_KEY;
+  const notionDatabaseID = process.env.NOTION_API_PROJECT_DATABASES;
 
   try {
-    const notionData = await fetchNotionData();
+    const notionData = await fetchNotionData(notionToken, notionDatabaseID);
     res.json(notionData);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch data from Notion" });
