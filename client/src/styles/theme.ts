@@ -34,6 +34,8 @@ const theme = {
     // body
     b1: fontGenerator("Pretendard", "1rem", "400", "1.5rem", "-0.02rem"),
     b1_bold: fontGenerator("Pretendard", "1rem", "600", "1.5rem", "-0.02rem"),
+
+    b3_bold: fontGenerator("Pretendard", "0.75rem", "600", "1rem", "-0.02rem"),
   },
 };
 

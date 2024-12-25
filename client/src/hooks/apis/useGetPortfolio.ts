@@ -14,14 +14,12 @@ const useGetPortfolio = (portfolioID: number) => {
 
   const getPortfolio = async () => {
     try {
-      // 익명 로그인
       await signInAnonymously(auth);
 
       const docRef = doc(ds, "portfolio", `${portfolioID}`);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        // docSnap.data()를 Portfolio 타입으로 캐스팅
         const data = docSnap.data() as Portfolio;
         setPortfolio(data);
       } else {
