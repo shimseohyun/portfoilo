@@ -1,4 +1,4 @@
-import { getResponse, postResponse } from "@apis/instance";
+import { postResponse } from "@apis/instance";
 import { Project } from "@models/Project";
 
 interface GetProjectsResponse {
