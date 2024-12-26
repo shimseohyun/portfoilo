@@ -1,10 +1,13 @@
+import { getAnimationByName } from "@styles/animation";
 import styled from "styled-components";
 
 export const AboutmeSectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1.5rem;
 
+  min-height: 100vh;
   padding-top: 3rem;
   padding-bottom: 1.75rem;
 `;
@@ -15,7 +18,9 @@ export const AboutmeSectionPortfolio = styled.div`
   align-items: end;
   gap: 1rem;
 
-  padding: 0rem 1rem;
+  padding: 0.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: ${({ theme }) => theme.colors.border.sub} 1px solid;
 
   .tablet &,
   .mobile & {
@@ -30,6 +35,10 @@ export const AboutmeSectionPortfolio = styled.div`
     height: 10rem;
   }
 `;
+
+export const AboutmeSectionPortfolioTitle = styled.div`
+  ${getAnimationByName("slideUp", 0.5, 0)}
+`;
 export const AboutmeSectionPortfolioInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,13 +49,16 @@ export const AboutmeSectionPortfolioInfo = styled.div`
   }
 `;
 
-export const AboutmeSectionDescrption = styled.div`
+export const AboutmeSectionDescrptionWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 
-  border-radius: 0.5rem;
-  padding: 1rem;
+  & > p {
+    color: ${({ theme }) => theme.colors.font.body_sub};
+  }
+  & > h3 {
+    padding-bottom: 0.5rem;
+  }
 
-  background-color: #f0f2f8;
+  ${getAnimationByName("slideLeft", 0.5, 0)}
 `;

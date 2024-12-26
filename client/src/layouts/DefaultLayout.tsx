@@ -35,6 +35,10 @@ const OutletWrapper = styled.section`
     ${({ theme }) => theme.fonts.b1_bold};
   }
 
+  .b3 {
+    ${({ theme }) => theme.fonts.b3};
+  }
+
   .b3_bold {
     ${({ theme }) => theme.fonts.b3_bold};
   }

@@ -6,7 +6,7 @@ export const ProjectCardWrapper = styled.section`
 
   padding: 0.75rem;
   border-radius: 0.75rem;
-  border: ${({ theme }) => theme.colors.border.sub} 1px solid;
+  border: ${({ theme }) => theme.colors.border.disable} 1px solid;
 
   width: 100%;
 

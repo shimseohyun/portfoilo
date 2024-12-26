@@ -22,6 +22,10 @@ const theme = {
     },
     border: {
       sub: "#C4C8D6",
+      disable: "#F0F2F8",
+    },
+    background: {
+      lightGray: "#f0f2f8",
     },
   },
 
@@ -35,6 +39,7 @@ const theme = {
     b1: fontGenerator("Pretendard", "1rem", "400", "1.5rem", "-0.02rem"),
     b1_bold: fontGenerator("Pretendard", "1rem", "600", "1.5rem", "-0.02rem"),
 
+    b3: fontGenerator("Pretendard", "0.75rem", "400", "1rem", "-0.02rem"),
     b3_bold: fontGenerator("Pretendard", "0.75rem", "600", "1rem", "-0.02rem"),
   },
 };

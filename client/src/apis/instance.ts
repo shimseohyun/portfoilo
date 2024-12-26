@@ -11,7 +11,6 @@ export const getResponse = async <ResponseType>(
 ): Promise<ResponseType | null> => {
   try {
     const response = await instance.get<ResponseType>(url);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -26,7 +25,6 @@ export const postResponse = async <ResponseType>(
 ): Promise<ResponseType | null> => {
   try {
     const response = await instance.post<ResponseType>(url);
-    console.log(response);
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
