@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { signInAnonymously } from "firebase/auth";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { auth, ds } from "../../../firebase"; // Firebase 초기화 파일
 
 import { Experience } from "@models/Experience";
