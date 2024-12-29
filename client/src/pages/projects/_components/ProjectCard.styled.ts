@@ -18,7 +18,6 @@ export const ProjectCardWrapper = styled(Link)`
 
   & > img {
     width: 100%;
-    padding-top: 56.25%;
     border-radius: 0.25rem;
 
     background-color: ${({ theme }) => theme.colors.background.lightGray};

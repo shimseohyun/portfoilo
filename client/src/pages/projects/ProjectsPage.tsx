@@ -22,9 +22,12 @@ const ProjectsPage = () => {
           id={project.id}
           title={project.properties.project.title[0]?.plain_text}
           description={project.properties.description.rich_text[0]?.plain_text}
-          techs={project.properties.Info.multi_select}
+          techs={project.properties.info.multi_select}
           results={project.properties.awards.multi_select}
           public_url={project.public_url}
+          thumbnail={
+            project.properties.thumbnail.url ?? "/image/project_thumbnail.svg"
+          }
         />
       ))}
     </S.ProjectsPageWrapper>

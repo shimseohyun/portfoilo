@@ -11,7 +11,8 @@ export interface Project {
   id: string;
   public_url: string;
   properties: {
-    Info: MultiSelect;
+    thumbnail: NotionURL;
+    info: MultiSelect;
     awards: MultiSelect;
     date: NotionDate;
     description: NotionRichText;

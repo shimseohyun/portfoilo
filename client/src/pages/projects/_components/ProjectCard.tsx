@@ -5,6 +5,7 @@ import Tag from "@components/tag/Tag";
 
 interface ProjectCardProps {
   id: string;
+  thumbnail: string;
   title: string;
   description: string;
   techs: NotionTag[];
@@ -25,7 +26,7 @@ const ProjectCard = ({ ...props }: ProjectCardProps) => {
 
       {/* 썸네일 */}
 
-      <img src="/" />
+      <img src={props.thumbnail} />
 
       {/* 정보 */}
       <S.ProjectCardInfoWrapper>

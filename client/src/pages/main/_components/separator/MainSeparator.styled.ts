@@ -35,5 +35,5 @@ export const MainSeparator1Content = styled.div`
 
 export const MainSeparator1Label = styled.h3`
   ${getAnimationByName("slideDown", 1, 0)}
-  z-index: 2;
+  z-index: 1;
 `;
