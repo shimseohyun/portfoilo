@@ -27,6 +27,7 @@ export const HeaderWrapper = styled.header`
 export const HeaderMenuWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
   ${defaultHorzontalSetting}
 `;
 

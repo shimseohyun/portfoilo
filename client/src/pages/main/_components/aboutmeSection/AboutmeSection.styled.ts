@@ -45,6 +45,13 @@ export const AboutmeSectionPortfolioInfo = styled.div`
   flex-direction: column;
   gap: 0.25rem;
 
+  & > h3 > br {
+    display: none;
+  }
+
+  .mobile & > h3 > br {
+    display: flex;
+  }
   p {
     color: ${({ theme }) => theme.colors.font.body_sub};
   }

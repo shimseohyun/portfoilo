@@ -1,5 +1,5 @@
 const fontGenerator = (
-  fontFamily = "Pretendard",
+  fontFamily = "sans-serif",
   fontSize = "1.6rem",
   fontWeight = "normal",
   lineHeight = "normal",
@@ -31,16 +31,16 @@ const theme = {
 
   fonts: {
     // head
-    h1: fontGenerator("Pretendard", "2rem", "600", "3.75rem", "-0.04rem"),
-    h2: fontGenerator("Pretendard", "1.5rem", "600", "2.5rem", "-0.035rem"),
-    h3: fontGenerator("Pretendard", "1.25rem", "600", "2rem", "-0.025rem"),
+    h1: fontGenerator("sans-serif", "2rem", "600", "3.75rem", "-0.04rem"),
+    h2: fontGenerator("sans-serif", "1.5rem", "600", "2.5rem", "-0.035rem"),
+    h3: fontGenerator("sans-serif", "1.25rem", "600", "2rem", "-0.025rem"),
 
     // body
-    b1: fontGenerator("Pretendard", "1rem", "400", "1.5rem", "-0.02rem"),
-    b1_bold: fontGenerator("Pretendard", "1rem", "600", "1.5rem", "-0.02rem"),
+    b1: fontGenerator("sans-serif", "1rem", "400", "1.5rem", "-0.02rem"),
+    b1_bold: fontGenerator("sans-serif", "1rem", "600", "1.5rem", "-0.02rem"),
 
-    b3: fontGenerator("Pretendard", "0.75rem", "400", "1rem", "-0.02rem"),
-    b3_bold: fontGenerator("Pretendard", "0.75rem", "600", "1rem", "-0.02rem"),
+    b3: fontGenerator("sans-serif", "0.75rem", "400", "1rem", "-0.02rem"),
+    b3_bold: fontGenerator("sans-serif", "0.75rem", "600", "1rem", "-0.02rem"),
   },
 };
 

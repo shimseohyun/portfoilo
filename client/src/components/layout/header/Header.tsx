@@ -1,3 +1,4 @@
+import useGetScreenSize from "@hooks/useGetScreenSize";
 import * as S from "./Header.styled";
 
 import HeaderSubLinks from "./_atom/HeaderSubLinks";
@@ -32,12 +33,14 @@ const Header = () => {
     },
   ];
 
+  const { screenType } = useGetScreenSize();
+
   return (
     <>
       <S.HeaderPadding />
       <S.HeaderWrapper>
         {/* 상단 네비게이터 */}
-        <S.HeaderMenuWrapper>
+        <S.HeaderMenuWrapper className={screenType}>
           <S.HeaderLink to="/">portfolio</S.HeaderLink>
 
           <S.HeaderContentWrapper>

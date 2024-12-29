@@ -22,12 +22,14 @@ const MainPage = () => {
       <AboutmeSection />
 
       <MainSeparator1 />
+
       <Suspense fallback={<div>Loading Portfolio...</div>}>
         <PortfolioSection portfolioID={4} />
         <PortfolioSection portfolioID={1} />
         <PortfolioSection portfolioID={5} />
         <PortfolioSection portfolioID={2} />
       </Suspense>
+      <div style={{ width: "100%", height: "50px" }} />
     </>
   );
 };
