@@ -12,7 +12,7 @@ export const HeaderWrapper = styled.header`
   transform: translate(-50%, 0%);
   top: 0;
   left: 50%;
-  z-index: 900;
+  z-index: 9000;
 
   display: flex;
   justify-content: center;

@@ -8,7 +8,7 @@ import AwardCard from "./_components/awardCard/AwardCard";
 // hooks
 import useGetAwards from "@hooks/apis/useGetAwards";
 import useGetExperiences from "@hooks/apis/useGetExperiences";
-import LoadingCard from "./_components/loadingCard/LoadingCard";
+import LoadingCard from "@components/loading/LoadingCard";
 
 const ExperiencesPage = () => {
   const { awards, loading: awardLoading, getAwards } = useGetAwards();

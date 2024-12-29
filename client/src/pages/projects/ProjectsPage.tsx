@@ -5,12 +5,13 @@ import { useGetProjects } from "@hooks/apis/useGetNotion";
 
 // components
 import ProjectCard from "./_components/ProjectCard";
+import LoadingCard from "@components/loading/LoadingCard";
 
 const ProjectsPage = () => {
   const { data: projects, isLoading } = useGetProjects();
 
   if (isLoading) {
-    return <div>로딩중</div>;
+    return <LoadingCard />;
   }
 
   return (

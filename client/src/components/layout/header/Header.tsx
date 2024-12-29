@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import * as S from "./Header.styled";
 
 import HeaderSubLinks from "./_atom/HeaderSubLinks";
-
-import useGetScreenSize from "@hooks/useGetScreenSize";
 
 export interface HeaderLink {
   title: string;
@@ -16,17 +13,6 @@ export interface HeaderLink {
 }
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
-  const { screenType } = useGetScreenSize();
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [screenType]);
-
-  const toggleHeader = () => {
-    setIsOpen((prev) => !prev);
-  };
-
   const headerList: HeaderLink[] = [
     {
       title: "경험",
@@ -40,8 +26,8 @@ const Header = () => {
       title: "링크",
 
       subLinks: [
-        { title: "GitHub", url: "https://github.com" },
-        { title: "Velog", url: "https://velog.io" },
+        { title: "GitHub", url: "https://github.com/shimseohyun" },
+        { title: "Velog", url: "https://velog.io/@shim020924/posts" },
       ],
     },
   ];
@@ -49,7 +35,7 @@ const Header = () => {
   return (
     <>
       <S.HeaderPadding />
-      <S.HeaderWrapper className={screenType}>
+      <S.HeaderWrapper>
         {/* 상단 네비게이터 */}
         <S.HeaderMenuWrapper>
           <S.HeaderLink to="/">portfolio</S.HeaderLink>

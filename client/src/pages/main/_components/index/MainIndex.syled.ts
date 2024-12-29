@@ -11,7 +11,7 @@ export const MainIndexFloatingButton = styled.button`
 
 export const MainIndexWrapper = styled.section`
   position: fixed;
-  z-index: 90000;
+  z-index: 900;
 
   display: flex;
   flex-direction: column;
