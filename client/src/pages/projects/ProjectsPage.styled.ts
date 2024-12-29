@@ -8,5 +8,7 @@ export const ProjectsPageWrapper = styled.section`
     grid-template-columns: repeat(1, 1fr);
   }
   column-gap: 1.25rem;
-  row-gap: 2rem;
+  row-gap: 1rem;
+
+  padding: 1rem 0;
 `;

@@ -39,6 +39,7 @@ export const animateFadeIn = keyframes`
 export const animateSlideUp = keyframes`
   from {
     margin-top: -20px;
+    transform: translatey(0px);
     opacity: 0;
   }
 

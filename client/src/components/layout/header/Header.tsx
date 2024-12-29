@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
+import * as S from "./Header.styled";
 
-interface HeaderLink {
+import HeaderSubLinks from "./_atom/HeaderSubLinks";
+
+import useGetScreenSize from "@hooks/useGetScreenSize";
+
+export interface HeaderLink {
   title: string;
   url?: string;
+
   subLinks?: {
     title: string;
     url: string;
@@ -11,6 +16,17 @@ interface HeaderLink {
 }
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const { screenType } = useGetScreenSize();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [screenType]);
+
+  const toggleHeader = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   const headerList: HeaderLink[] = [
     {
       title: "경험",
@@ -22,6 +38,7 @@ const Header = () => {
     },
     {
       title: "링크",
+
       subLinks: [
         { title: "GitHub", url: "https://github.com" },
         { title: "Velog", url: "https://velog.io" },
@@ -31,85 +48,28 @@ const Header = () => {
 
   return (
     <>
-      <HeaderPadding />
-      <HeaderWrapper>
-        <Link to="/">portfolio</Link>
+      <S.HeaderPadding />
+      <S.HeaderWrapper className={screenType}>
+        {/* 상단 네비게이터 */}
+        <S.HeaderMenuWrapper>
+          <S.HeaderLink to="/">portfolio</S.HeaderLink>
 
-        <HeaderContentWrapper>
-          {headerList.map((list) =>
-            list.subLinks ? (
-              <div key={list.title}>
-                {list.title}
-
-                {list.subLinks && (
-                  <SubContentWrapper key={list.title}>
-                    {list.subLinks.map((subLink) => (
-                      <SubContent to={subLink.url} key={subLink.title}>
-                        {subLink.title}
-                      </SubContent>
-                    ))}
-                  </SubContentWrapper>
-                )}
-              </div>
-            ) : (
-              <Link key={list.title} to={list.url ?? ""}>
-                {list.title}
-              </Link>
-            )
-          )}
-        </HeaderContentWrapper>
-      </HeaderWrapper>
+          <S.HeaderContentWrapper>
+            {headerList.map((list) =>
+              list.subLinks ? (
+                <HeaderSubLinks link={list} />
+              ) : (
+                <S.HeaderLink key={list.title} to={list.url ?? ""}>
+                  {list.title}
+                </S.HeaderLink>
+              )
+            )}
+          </S.HeaderContentWrapper>
+        </S.HeaderMenuWrapper>
+        {/* 상단 네비게이터 */}
+      </S.HeaderWrapper>
     </>
   );
 };
 
 export default Header;
-
-const HeaderPadding = styled.div`
-  height: 3.5rem;
-`;
-
-const HeaderWrapper = styled.header`
-  position: fixed;
-
-  transform: translate(-50%, 0%);
-  top: 0;
-  left: 50%;
-
-  display: flex;
-  justify-content: space-between;
-
-  width: 100%;
-  max-width: 960px;
-
-  padding: 1rem 0;
-  padding-left: 3rem;
-  padding-right: 3rem;
-
-  &.mobile {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  background-color: white;
-  z-index: 900;
-`;
-
-const HeaderContentWrapper = styled.section`
-  position: relative;
-  display: flex;
-  gap: 2rem;
-`;
-
-const SubContentWrapper = styled.div`
-  position: absolute;
-  right: 0;
-  top: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const SubContent = styled(Link)``;

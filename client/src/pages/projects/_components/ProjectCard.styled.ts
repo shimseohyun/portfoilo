@@ -1,6 +1,8 @@
+import { onClickButtonAnimation } from "@styles/animation";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const ProjectCardWrapper = styled.section`
+export const ProjectCardWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
 
@@ -10,11 +12,16 @@ export const ProjectCardWrapper = styled.section`
 
   width: 100%;
 
+  &:hover {
+    animation: ${onClickButtonAnimation} 0.5s;
+  }
+
   & > img {
     width: 100%;
+    padding-top: 56.25%;
     border-radius: 0.25rem;
 
-    background-color: pink;
+    background-color: ${({ theme }) => theme.colors.background.lightGray};
   }
 `;
 
