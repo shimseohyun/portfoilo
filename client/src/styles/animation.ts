@@ -36,44 +36,32 @@ export const animateFadeIn = keyframes`
   }
 `;
 
+// 텍스트용
 export const animateSlideUp = keyframes`
   from {
-    margin-top: -20px;
-    transform: translatey(0px);
+    transform: translatey(-20px);
     opacity: 0;
   }
 
   to {
-    margin-top: 0%;
+    transform: translatey(0px);
     opacity: 1;
   }
 `;
 
 export const animateSlideDown = keyframes`
   from {
-    margin-top: 20px;
+    transform: translatey(20px);
     opacity: 0;
   }
 
   to {
-    margin-top: 0%;
+    transform: translatey(0px);
     opacity: 1;
   }
 `;
 
 export const animateSlideLeft = keyframes`
-  from {
-    margin-left: -40px;
-    opacity: 0;
-  }
-
-  to {
-    margin-left: 0px;
-    opacity: 1;
-  }
-`;
-
-export const animateSlideLeftText = keyframes`
   from {
     transform: translatex(-40px);
     opacity: 0;
@@ -86,6 +74,55 @@ export const animateSlideLeftText = keyframes`
 `;
 
 export const animateSlideRight = keyframes`
+  from {
+    transform: translatex(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translatex(0px);
+    opacity: 1;
+  }
+`;
+
+// 이미지용
+export const animateSlideUpImage = keyframes`
+  from {
+    margin-top: -20px;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 0px;
+    opacity: 1;
+  }
+`;
+
+export const animateSlideDownImage = keyframes`
+  from {
+    margin-top: 20px;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 0%;
+    opacity: 1;
+  }
+`;
+
+export const animateSlideLeftImage = keyframes`
+  from {
+    margin-left: -40px;
+    opacity: 0;
+  }
+
+  to {
+    margin-left: 0px;
+    opacity: 1;
+  }
+`;
+
+export const animateSlideRightImage = keyframes`
   from {
     margin-left: 40px;
     opacity: 0;
@@ -110,9 +147,13 @@ const animations = {
   fadeIn: animateFadeIn,
   slideRight: animateSlideRight,
   slideLeft: animateSlideLeft,
-  slideLeftText: animateSlideLeftText,
   slideUp: animateSlideUp,
   slideDown: animateSlideDown,
+  // 이미지용
+  slideRightImage: animateSlideRightImage,
+  slideLeftImage: animateSlideLeftImage,
+  slideUpImage: animateSlideUpImage,
+  slideDownImage: animateSlideDownImage,
 };
 
 export type AnimationKey = keyof typeof animations;

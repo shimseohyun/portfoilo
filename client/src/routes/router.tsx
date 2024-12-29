@@ -5,7 +5,7 @@ import DefaultLayout from "@layouts/DefaultLayout";
 
 // pages
 import MainPage from "@pages/main/MainPage";
-import AdminPage from "@pages/admin/AdminPage";
+// import AdminPage from "@pages/admin/AdminPage";
 import ExperiencesPage from "@pages/experiences/ExperiencesPage";
 import ProjectsPage from "@pages/projects/ProjectsPage";
 
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <DefaultLayout />,
     children: [
       { path: "", element: <MainPage /> },
-      { path: "/admin", element: <AdminPage /> },
+      // { path: "/admin", element: <AdminPage /> },
       { path: "/experiences", element: <ExperiencesPage /> },
       { path: "/projects", element: <ProjectsPage /> },
     ],

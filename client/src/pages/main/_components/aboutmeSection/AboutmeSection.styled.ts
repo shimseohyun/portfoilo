@@ -68,5 +68,5 @@ export const AboutmeSectionDescrptionWrapper = styled.section`
     padding-bottom: 0.5rem;
   }
 
-  ${getAnimationByName("slideLeftText", 0.5, 0)}
+  ${getAnimationByName("slideLeft", 0.5, 0)}
 `;
