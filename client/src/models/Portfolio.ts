@@ -1,3 +1,5 @@
+import { AnimationKey } from "@styles/animation";
+
 export interface Portfolio {
   portfolioID: number;
   title: string;
@@ -21,5 +23,5 @@ export interface PortfolioTech {
 interface ImageDetail {
   url: string;
   alt?: string;
-  animation?: string;
+  animation?: AnimationKey;
 }

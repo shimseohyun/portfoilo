@@ -1,16 +1,26 @@
 import React, { Suspense } from "react";
 
-import AboutmeSection from "@components/main/aboutmeSection/AboutmeSection";
-import MainSeparator1 from "@components/main/separator/MainSeparator1";
+// hooks
+import useIndex from "@hooks/useIndex";
+
+// components
+import AboutmeSection from "././_components/aboutmeSection/AboutmeSection";
+import MainSeparator1 from "././_components/separator/MainSeparator1";
+import MainIndex from "./_components/index/MainIndex";
 
 const PortfolioSection = React.lazy(
-  () => import("@components/main/portfolioSection/PortfolioSection")
+  () => import("././_components/portfolioSection/PortfolioSection")
 );
 
 const MainPage = () => {
+  const { indexs } = useIndex();
+
   return (
     <>
+      <MainIndex indexs={indexs} />
+
       <AboutmeSection />
+
       <MainSeparator1 />
       <Suspense fallback={<div>Loading Portfolio...</div>}>
         <PortfolioSection portfolioID={4} />

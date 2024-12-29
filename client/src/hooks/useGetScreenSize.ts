@@ -19,7 +19,14 @@ const useGetScreenSize = () => {
     };
   }, [setScreenSize]);
 
-  return screenSize;
+  const screenType: string =
+    screenSize.width > 720
+      ? "desktop"
+      : screenSize.width > 540
+      ? "tablet"
+      : "mobile";
+
+  return { screenSize, screenType };
 };
 
 export default useGetScreenSize;

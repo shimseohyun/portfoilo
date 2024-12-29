@@ -1,11 +1,11 @@
 import { useState } from "react";
-import * as S from "./PortfolioSection.styled";
+import * as S from "../PortfolioSection.styled";
 
 // models
 import { Portfolio, PortfolioTech } from "@models/Portfolio";
 
 // components
-import HighlightedText from "@components/common/highlightedText/HighlightedText";
+import HighlightedText from "@components/highlightedText/HighlightedText";
 import useVisibility from "@hooks/useVisibility";
 
 interface PortfolioSectionTechCardProps
@@ -29,7 +29,10 @@ const PortfolioSectionTechCard = ({
   const { ref, isVisible } = useVisibility();
 
   return (
-    <S.PortfolioSectionTechCardWrapper ref={ref}>
+    <S.PortfolioSectionTechCardWrapper
+      className={isVisible ? "visible" : "non-visible"}
+      ref={ref}
+    >
       <S.PortfolioSectionTechCardTitle>
         <h2>{props.title}</h2>
         <img
@@ -41,7 +44,7 @@ const PortfolioSectionTechCard = ({
 
       {/* 카드가 열렸을 때만 내용 표시 */}
       {isOpen && (
-        <S.PortfolioSectionTechCardDescription $isVisible={isVisible}>
+        <S.PortfolioSectionTechCardDescription>
           {props.images.length == 0 ? null : (
             <S.PortfolioSectionTechCardImagesWrapper
               $itemCount={props.images.length}

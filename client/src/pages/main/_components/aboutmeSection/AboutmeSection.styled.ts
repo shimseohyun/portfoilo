@@ -39,6 +39,7 @@ export const AboutmeSectionPortfolio = styled.div`
 export const AboutmeSectionPortfolioTitle = styled.div`
   ${getAnimationByName("slideUp", 0.5, 0)}
 `;
+
 export const AboutmeSectionPortfolioInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,5 +61,5 @@ export const AboutmeSectionDescrptionWrapper = styled.section`
     padding-bottom: 0.5rem;
   }
 
-  ${getAnimationByName("slideLeft", 0.5, 0)}
+  ${getAnimationByName("slideLeftText", 0.5, 0)}
 `;

@@ -11,7 +11,7 @@ const useVisibility = () => {
       },
       {
         root: null,
-        rootMargin: `1200px 0px 20px 0px`,
+        rootMargin: `1200px 0px 10px 0px`,
         threshold: 0,
       }
     );

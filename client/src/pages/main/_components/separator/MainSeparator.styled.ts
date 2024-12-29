@@ -6,25 +6,14 @@ export const MainSeparator1Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
 
-  margin: 3.5rem 0rem;
+  margin: 3.5rem 0rem 5rem 0rem;
   padding: 4rem 0;
   width: 100%;
 
-  & > * {
-    z-index: 2;
-  }
-  & > span {
-    padding-bottom: 2rem;
-  }
-
-  & > span,
-  & > h3 {
-    ${getAnimationByName("slideDown", 1, 0)}
-  }
-
   & > p {
+    padding-top: 2rem;
     color: ${({ theme }) => theme.colors.font.body_sub};
     animation: ${animateFloating} 2s ease-in-out infinite;
   }
@@ -42,4 +31,9 @@ export const MainSeparator1Content = styled.div`
   background-color: ${({ theme }) => theme.colors.background.lightGray};
 
   ${getAnimationByName("fadeIn", 1, 0)}
+`;
+
+export const MainSeparator1Label = styled.h3`
+  ${getAnimationByName("slideDown", 1, 0)}
+  z-index: 2;
 `;

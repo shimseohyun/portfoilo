@@ -1,7 +1,7 @@
 import { NotionTag } from "@models/Notion";
 import * as S from "./ProjectCard.styled";
 import { Link } from "react-router-dom";
-import Tag from "@components/common/tag/Tag";
+import Tag from "@components/tag/Tag";
 
 interface ProjectCardProps {
   id: string;

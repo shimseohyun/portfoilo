@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import * as S from "./PortfolioSection.styled";
 
+// components
+import PortfolioSectionInfoCard from "./_atoms/PortfolioSectionInfoCard";
+import PortfolioSectionCardLoading from "./_atoms/PortfolioSectionCardLoading";
+import PortfolioSectionCardError from "./_atoms/PortfolioSectionCardError";
+
 // hooks
 import useGetPortfolio from "@hooks/apis/useGetPortfolio";
-
-// components
-import PortfolioSectionTechCard from "./PortfolioSectionTechCard";
-import PortfolioSectionInfoCard from "./PortfolioSectionInfoCard";
 
 interface PortfolioSectionProps {
   portfolioID: number;
@@ -22,25 +23,17 @@ const PortfolioSection = ({ ...props }: PortfolioSectionProps) => {
   }, []);
 
   if (error != null) {
-    return <div>{error}</div>;
+    return <PortfolioSectionCardError errorText={error} />;
   }
 
   if (loading) {
-    return <div>로딩중</div>;
+    return <PortfolioSectionCardLoading />;
   }
 
   return (
     portfolio && (
       <S.PortfolioSectionWrapper>
         <PortfolioSectionInfoCard {...portfolio} />
-
-        {portfolio.techs.map((tech, index) => (
-          <PortfolioSectionTechCard
-            key={index}
-            mainColor={portfolio.mainColor}
-            {...tech}
-          />
-        ))}
       </S.PortfolioSectionWrapper>
     )
   );

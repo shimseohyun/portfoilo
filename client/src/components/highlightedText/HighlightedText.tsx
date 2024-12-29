@@ -32,6 +32,7 @@ const HighlightedTextWrapper = styled.div<HighlightedTextWrapperProps>`
   & > * {
     white-space: pre-wrap;
   }
+
   .highlight {
     background: linear-gradient(
       to right,
@@ -40,8 +41,16 @@ const HighlightedTextWrapper = styled.div<HighlightedTextWrapperProps>`
     );
     background-size: 200%;
 
-    animation: ${animateHighlightText} 1s ease-out forwards;
+    .non-visible,
+    .non-visible & {
+      animation: none !important;
+    }
+
+    .visible & {
+      animation: ${animateHighlightText} 1s ease-out forwards;
+    }
   }
+
   div {
     padding: 0.25rem 0;
   }

@@ -18,10 +18,10 @@ export const animateFloating = keyframes`
   }
 
   50% {
-    transform: translatey(8px);
+    transform: translatey(6px);
   }
 
-  0% {
+  100% {
     transform: translatey(0px);
   }
 `;
@@ -72,6 +72,18 @@ export const animateSlideLeft = keyframes`
   }
 `;
 
+export const animateSlideLeftText = keyframes`
+  from {
+    transform: translatex(-40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translatex(0px);
+    opacity: 1;
+  }
+`;
+
 export const animateSlideRight = keyframes`
   from {
     margin-left: 40px;
@@ -93,43 +105,37 @@ export const animateHighlightText = keyframes`
   }
 `;
 
+const animations = {
+  fadeIn: animateFadeIn,
+  slideRight: animateSlideRight,
+  slideLeft: animateSlideLeft,
+  slideLeftText: animateSlideLeftText,
+  slideUp: animateSlideUp,
+  slideDown: animateSlideDown,
+};
+
+export type AnimationKey = keyof typeof animations;
+
 export const getAnimationByName = (
-  animation: string,
+  animation: AnimationKey,
   duration: number,
   delay: number
 ) => {
-  switch (animation) {
-    case "fadeIn":
-      return css`
-        opacity: 0;
-        animation: ${animateFadeIn} ${duration}s ease-in-out forwards;
-        animation-delay: ${delay}s;
-      `;
-    case "slideRight":
-      return css`
-        opacity: 0;
-        animation: ${animateSlideRight} ${duration}s ease-in-out forwards;
-        animation-delay: ${delay}s;
-      `;
-    case "slideLeft":
-      return css`
-        opacity: 0;
-        animation: ${animateSlideLeft} ${duration}s ease-in-out forwards;
-        animation-delay: ${delay}s;
-      `;
-    case "slideUp":
-      return css`
-        opacity: 0;
-        animation: ${animateSlideUp} ${duration}s ease-in-out forwards;
-        animation-delay: ${delay}s;
-      `;
-    case "slideDown":
-      return css`
-        opacity: 0;
-        animation: ${animateSlideDown} ${duration}s ease-in-out forwards;
-        animation-delay: ${delay}s;
-      `;
-    default:
-      return null;
-  }
+  const selectedAnimation = animations[animation];
+
+  if (!selectedAnimation) return null;
+
+  return css`
+    opacity: 0;
+
+    .non-visible,
+    .non-visible & {
+      animation: none !important;
+    }
+
+    .visible & {
+      animation: ${selectedAnimation} ${duration}s ease-in-out forwards;
+      animation-delay: ${delay}s;
+    }
+  `;
 };

@@ -3,14 +3,16 @@ import styled from "styled-components";
 import { Outlet } from "react-router-dom";
 import useGetScreenSize from "@hooks/useGetScreenSize";
 
+// components
+import Header from "@components/layout/header/Header";
+
 const DefaultLayout = () => {
-  const { width } = useGetScreenSize();
+  const { screenType } = useGetScreenSize();
 
   return (
     <>
-      <OutletWrapper
-        className={width > 720 ? "desktop" : width > 540 ? "tablet" : "mobile"}
-      >
+      <OutletWrapper className={screenType}>
+        <Header />
         <Outlet />
       </OutletWrapper>
     </>

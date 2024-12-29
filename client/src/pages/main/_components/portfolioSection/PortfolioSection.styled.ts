@@ -1,4 +1,4 @@
-import { getAnimationByName } from "@styles/animation";
+import { AnimationKey, getAnimationByName } from "@styles/animation";
 import styled from "styled-components";
 
 export const PortfolioSectionWrapper = styled.section`
@@ -11,6 +11,10 @@ export const PortfolioSectionWrapper = styled.section`
   padding-bottom: 3.75rem;
 
   white-space: pre-wrap;
+
+  &.align-center {
+    align-items: center;
+  }
 `;
 
 export const PortfolioSectionInfoWrapper = styled.section`
@@ -22,6 +26,8 @@ export const PortfolioSectionInfoWrapper = styled.section`
 export const PortfolioSectionTitle = styled.div`
   margin-bottom: -1.5rem;
   border-bottom: ${({ theme }) => theme.colors.border.sub} 2px solid;
+
+  width: 100%;
 `;
 
 export const PortfolioSectionMainBriefWrapper = styled.section`
@@ -54,7 +60,7 @@ export const PortfolioSectionBriefThumbnailWrapper = styled.div`
 
 interface PortfolioSectionBriefThumbnailProps {
   $backgroundColor: string;
-  $animation?: string;
+  $animation?: AnimationKey;
 }
 
 export const PortfolioSectionBriefThumbnailBase = styled.img<PortfolioSectionBriefThumbnailProps>`
@@ -97,15 +103,20 @@ export const PortfolioSectionURLsWrapper = styled.ul`
 
   & > li {
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
-  & > li > b {
+  & > li > div {
+    display: flex;
+    gap: 0.5rem;
+  }
+  & > li > div > b {
     width: 4.5rem;
     flex-shrink: 0;
   }
 
-  & > li > a {
+  & > li > div > a {
     flex-grow: 1;
     text-decoration-line: underline;
 
@@ -185,10 +196,7 @@ export const PortfolioSectionTechCardTitle = styled.div`
   }
 `;
 
-interface PortfolioSectionTechCardDescriptionProps {
-  $isVisible: boolean;
-}
-export const PortfolioSectionTechCardDescription = styled.div<PortfolioSectionTechCardDescriptionProps>`
+export const PortfolioSectionTechCardDescription = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -199,7 +207,6 @@ export const PortfolioSectionTechCardDescription = styled.div<PortfolioSectionTe
     gap: 1.25rem;
   }
 
-  display: ${(props) => (props.$isVisible ? "flex" : "none")};
   ${getAnimationByName("slideUp", 1, 0)}
 `;
 
@@ -221,5 +228,21 @@ export const PortfolioSectionTechCardImagesWrapper = styled.div<PortfolioSection
   // 이미지
   & > img {
     width: 100%;
+  }
+`;
+
+export const PortfolioSectionCardErrorContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  & > p {
+    color: ${({ theme }) => theme.colors.font.body_sub};
   }
 `;

@@ -4,7 +4,7 @@ import * as S from "./ProjectsPage.styled";
 import { useGetProjects } from "@hooks/apis/useGetNotion";
 
 // components
-import ProjectCard from "@components/projects/ProjectCard";
+import ProjectCard from "./_components/ProjectCard";
 
 const ProjectsPage = () => {
   const { data: projects, isLoading } = useGetProjects();
