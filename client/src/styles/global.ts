@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { defaultFontSetting } from "./default";
 
 const GlobalStyle = createGlobalStyle`
 *{box-sizing:border-box}
@@ -32,20 +33,16 @@ html {
     scroll-behavior: smooth; 
 
 	font-size: 16px;
-	
-	@media (max-width: 380px) {
-		/* font-size:12px; */
-	}
 }
 
 body {
-	width: 100%;
-	max-width: 960px;
 	overflow-x: hidden;
 	background-color: white;
 	
 	scrollbar-width: none; 
 	-ms-overflow-style: none;
+
+	${defaultFontSetting}
 
 	::-webkit-scrollbar {
     display: none;

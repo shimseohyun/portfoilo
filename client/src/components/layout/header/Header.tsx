@@ -1,9 +1,12 @@
-import useGetScreenSize from "@hooks/useGetScreenSize";
 import * as S from "./Header.styled";
 
-import HeaderSubLinks from "./_atom/HeaderSubLinks";
+// hooks
+import { useLocation } from "react-router-dom";
 
-export interface HeaderLink {
+// components
+import HeaderItemWithSub from "./_atom/HeaderItemWithSub";
+
+export interface HeaderItem {
   title: string;
   url?: string;
 
@@ -14,7 +17,9 @@ export interface HeaderLink {
 }
 
 const Header = () => {
-  const headerList: HeaderLink[] = [
+  const location = useLocation();
+
+  const headerLiteral: HeaderItem[] = [
     {
       title: "경험",
       url: "/experiences",
@@ -33,29 +38,34 @@ const Header = () => {
     },
   ];
 
-  const { screenType } = useGetScreenSize();
-
   return (
     <>
       <S.HeaderPadding />
-      <S.HeaderWrapper>
-        {/* 상단 네비게이터 */}
-        <S.HeaderMenuWrapper className={screenType}>
-          <S.HeaderLink to="/">portfolio</S.HeaderLink>
 
-          <S.HeaderContentWrapper>
-            {headerList.map((list) =>
-              list.subLinks ? (
-                <HeaderSubLinks link={list} />
-              ) : (
-                <S.HeaderLink key={list.title} to={list.url ?? ""}>
-                  {list.title}
-                </S.HeaderLink>
-              )
-            )}
-          </S.HeaderContentWrapper>
+      <S.HeaderWrapper>
+        <S.HeaderButton $isCurrent={true} to="/">
+          portfolio
+        </S.HeaderButton>
+
+        <S.HeaderMenuWrapper>
+          {headerLiteral.map((item, index) =>
+            item.subLinks ? (
+              // 아이템 내 서브링크가 있는 경우
+              <HeaderItemWithSub key={index} item={item} />
+            ) : (
+              // 아이템 . 내서브링크가 없는 경우
+              <S.HeaderButton
+                key={index}
+                to={item.url ?? ""}
+                $isCurrent={location.pathname === item.url}
+              >
+                {item.title}
+              </S.HeaderButton>
+            )
+          )}
         </S.HeaderMenuWrapper>
-        {/* 상단 네비게이터 */}
+
+        <S.HeaderBackground />
       </S.HeaderWrapper>
     </>
   );

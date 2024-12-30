@@ -1,10 +1,23 @@
 import { animateSlideUp } from "@styles/animation";
-import { defaultFontSetting, defaultHorzontalSetting } from "@styles/default";
+import { defaultHorzontalSetting } from "@styles/default";
+
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderPadding = styled.div`
   height: 3.5rem;
+`;
+
+export const HeaderBackground = styled.div`
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+  z-index: 0;
+
+  width: 100vw;
+  height: 100%;
+
+  background-color: white;
 `;
 
 export const HeaderWrapper = styled.header`
@@ -15,33 +28,33 @@ export const HeaderWrapper = styled.header`
   z-index: 9000;
 
   display: flex;
-  justify-content: center;
-
-  width: 100vw;
-
-  background-color: white;
-
-  ${defaultFontSetting}
-`;
-
-export const HeaderMenuWrapper = styled.div`
-  display: flex;
   justify-content: space-between;
 
   ${defaultHorzontalSetting}
 `;
 
-export const HeaderContentWrapper = styled.section`
-  position: relative;
+export const HeaderMenuWrapper = styled.section`
   display: flex;
   gap: 1rem;
+  z-index: 1;
 `;
 
-export const HeaderLink = styled(Link)`
+// 헤더의 버튼들
+const headerButtonStyle = css`
   padding: 0.75rem 0;
+  z-index: 1;
 `;
 
-export const HeaderButton = styled.div`
+interface HeaderButtonProps {
+  $isCurrent: boolean;
+}
+export const HeaderButton = styled(Link)<HeaderButtonProps>`
+  ${headerButtonStyle}
+  color: ${({ theme, $isCurrent }) =>
+    $isCurrent ? theme.colors.font.head : theme.colors.font.body_disable};
+`;
+
+export const HeaderItemWithSubButton = styled.div`
   cursor: pointer;
   display: flex;
   gap: 0.25rem;
@@ -51,10 +64,20 @@ export const HeaderButton = styled.div`
   & > img {
     width: 1.5rem;
     height: 1.5rem;
+    opacity: 50%;
   }
+  color: ${({ theme }) => theme.colors.font.body_disable};
 `;
 
-export const SubContentWrapper = styled.div`
+// 헤더의 서브 버튼의 요소들
+export const HeaderItemWithSubWrapper = styled.section`
+  position: relative;
+
+  display: flex;
+  gap: 1rem;
+`;
+
+export const HeaderItemWithSubMenuWrapper = styled.div`
   position: absolute;
   right: 0;
   top: 2rem;
@@ -71,9 +94,7 @@ export const SubContentWrapper = styled.div`
   animation: ${animateSlideUp} 0.25s ease-in-out forwards;
 `;
 
-export const SubContent = styled(Link)``;
-
-export const HeaderBackgroud = styled.div`
+export const HeaderTouchArea = styled.div`
   z-index: 998;
   position: fixed;
   top: 0;
