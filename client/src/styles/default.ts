@@ -5,7 +5,7 @@ export const defaultHorzontalSetting = css`
   padding-right: 3rem;
 
   &.mobile,
-  & .mobile {
+  .mobile & {
     padding-left: 1rem;
     padding-right: 1rem;
   }
