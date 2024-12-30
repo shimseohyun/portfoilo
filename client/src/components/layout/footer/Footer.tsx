@@ -1,12 +1,19 @@
 import { useLocation } from "react-router-dom";
 import * as S from "./Footer.styled";
+import useGetScreenSize from "@hooks/useGetScreenSize";
 
 const Footer = () => {
   const location = useLocation();
+  const { screenType } = useGetScreenSize();
 
   return (
     <S.FooterWrapper
-      style={{ paddingBottom: location.pathname === "/" ? "5rem" : "null" }}
+      style={{
+        paddingBottom:
+          location.pathname === "/" && screenType === "mobile"
+            ? "5rem"
+            : "null",
+      }}
     >
       <div>
         <a href="https://github.com/shimseohyun/portfoilo">
