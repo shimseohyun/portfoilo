@@ -9,6 +9,9 @@ interface MainIndexProps {
 }
 
 const MainIndex = ({ indexs }: MainIndexProps) => {
+  const [isIsIndexOpen, setIsIndexOpen] = useState<boolean>(true);
+  const { screenType } = useGetScreenSize();
+
   const handleIndexClick = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
       window.scrollTo({
@@ -18,8 +21,34 @@ const MainIndex = ({ indexs }: MainIndexProps) => {
     }
   };
 
-  const [isIsIndexOpen, setIsIndexOpen] = useState<boolean>(true);
-  const { screenType } = useGetScreenSize();
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let currentActiveIndex = null;
+
+      indexs.forEach((index, idx) => {
+        if (index.ref.current) {
+          const { offsetTop, offsetHeight } = index.ref.current;
+          const scrollPosition = window.scrollY + 60;
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            currentActiveIndex = idx;
+          }
+        }
+      });
+
+      setActiveIndex(currentActiveIndex);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [indexs]);
 
   useEffect(() => {
     if (screenType == "mobile") {
@@ -35,6 +64,7 @@ const MainIndex = ({ indexs }: MainIndexProps) => {
             <S.MainIndexContent
               key={idx}
               onClick={() => handleIndexClick(index.ref)}
+              $isCurrent={activeIndex === idx}
             >
               {index.title}
             </S.MainIndexContent>
