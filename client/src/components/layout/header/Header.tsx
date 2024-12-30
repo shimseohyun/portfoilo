@@ -1,7 +1,10 @@
-import useGetScreenSize from "@hooks/useGetScreenSize";
 import * as S from "./Header.styled";
-import HeaderItemWithSub from "./_atom/HeaderItemWithSub";
+
+// hooks
 import { useLocation } from "react-router-dom";
+
+// components
+import HeaderItemWithSub from "./_atom/HeaderItemWithSub";
 
 export interface HeaderItem {
   title: string;
