@@ -1,8 +1,13 @@
+import { useLocation } from "react-router-dom";
 import * as S from "./Footer.styled";
 
 const Footer = () => {
+  const location = useLocation();
+
   return (
-    <S.FooterWrapper>
+    <S.FooterWrapper
+      style={{ paddingBottom: location.pathname === "/" ? "5rem" : "null" }}
+    >
       <div>
         <a href="https://github.com/shimseohyun/portfoilo">
           <img src="/icons/git_gray.svg" />

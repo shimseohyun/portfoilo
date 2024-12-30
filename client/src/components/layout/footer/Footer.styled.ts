@@ -20,6 +20,7 @@ export const FooterWrapper = styled.footer`
     display: flex;
     flex-direction: column;
   }
+
   & > div > span {
     padding-top: 0.5rem;
   }
