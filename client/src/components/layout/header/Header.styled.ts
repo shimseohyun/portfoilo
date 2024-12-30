@@ -1,6 +1,6 @@
 import { animateSlideUp } from "@styles/animation";
-import { defaultFontSetting, defaultHorzontalSetting } from "@styles/default";
-import theme from "@styles/theme";
+import { defaultHorzontalSetting } from "@styles/default";
+
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
@@ -8,24 +8,25 @@ export const HeaderPadding = styled.div`
   height: 3.5rem;
 `;
 
-export const HeaderBackgroundWrapper = styled.header`
+export const HeaderBackground = styled.div`
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+  z-index: 0;
+
+  width: 100vw;
+  height: 100%;
+
+  background-color: white;
+`;
+
+export const HeaderWrapper = styled.header`
   position: fixed;
   transform: translate(-50%, 0%);
   top: 0;
   left: 50%;
   z-index: 9000;
 
-  display: flex;
-  justify-content: center;
-
-  width: 100vw;
-
-  background-color: white;
-
-  ${defaultFontSetting}
-`;
-
-export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
@@ -35,11 +36,13 @@ export const HeaderWrapper = styled.div`
 export const HeaderMenuWrapper = styled.section`
   display: flex;
   gap: 1rem;
+  z-index: 1;
 `;
 
 // 헤더의 버튼들
 const headerButtonStyle = css`
   padding: 0.75rem 0;
+  z-index: 1;
 `;
 
 interface HeaderButtonProps {
