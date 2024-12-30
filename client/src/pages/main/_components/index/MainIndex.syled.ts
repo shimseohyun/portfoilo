@@ -64,7 +64,14 @@ export const MainIndexContentwrapper = styled.section`
   background-color: white;
 `;
 
-export const MainIndexContent = styled.div`
+interface MainIndexContentProps {
+  $isCurrent: boolean;
+}
+
+export const MainIndexContent = styled.div<MainIndexContentProps>`
+  color: ${({ $isCurrent, theme }) =>
+    $isCurrent ? theme.colors.font.body : theme.colors.font.body_disable};
+
   .mobile & {
     padding: 1.25rem 0.5rem;
     flex-shrink: 0;

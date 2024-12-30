@@ -32,7 +32,7 @@ const MainPage = () => {
         <PortfolioSection portfolioID={2} />
         <PortfolioSection portfolioID={3} />
       </Suspense>
-      <div style={{ width: "100%", height: "50px" }} />
+      <div style={{ width: "100%", height: "20px" }} />
     </>
   );
 };
