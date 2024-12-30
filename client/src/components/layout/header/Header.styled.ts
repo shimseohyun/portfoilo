@@ -1,13 +1,13 @@
 import { animateSlideUp } from "@styles/animation";
 import { defaultFontSetting, defaultHorzontalSetting } from "@styles/default";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderPadding = styled.div`
   height: 3.5rem;
 `;
 
-export const HeaderWrapper = styled.header`
+export const HeaderBackgroundWrapper = styled.header`
   position: fixed;
   transform: translate(-50%, 0%);
   top: 0;
@@ -24,24 +24,28 @@ export const HeaderWrapper = styled.header`
   ${defaultFontSetting}
 `;
 
-export const HeaderMenuWrapper = styled.div`
+export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
   ${defaultHorzontalSetting}
 `;
 
-export const HeaderContentWrapper = styled.section`
-  position: relative;
+export const HeaderMenuWrapper = styled.section`
   display: flex;
   gap: 1rem;
 `;
 
-export const HeaderLink = styled(Link)`
+// 헤더의 버튼들
+const headerButtonStyle = css`
   padding: 0.75rem 0;
 `;
 
-export const HeaderButton = styled.div`
+export const HeaderButton = styled(Link)`
+  ${headerButtonStyle}
+`;
+
+export const HeaderItemWithSubButton = styled.div`
   cursor: pointer;
   display: flex;
   gap: 0.25rem;
@@ -54,7 +58,15 @@ export const HeaderButton = styled.div`
   }
 `;
 
-export const SubContentWrapper = styled.div`
+// 헤더의 서브 버튼의 요소들
+export const HeaderItemWithSubWrapper = styled.section`
+  position: relative;
+
+  display: flex;
+  gap: 1rem;
+`;
+
+export const HeaderItemWithSubMenuWrapper = styled.div`
   position: absolute;
   right: 0;
   top: 2rem;
@@ -71,9 +83,7 @@ export const SubContentWrapper = styled.div`
   animation: ${animateSlideUp} 0.25s ease-in-out forwards;
 `;
 
-export const SubContent = styled(Link)``;
-
-export const HeaderBackgroud = styled.div`
+export const HeaderTouchArea = styled.div`
   z-index: 998;
   position: fixed;
   top: 0;

@@ -1,9 +1,8 @@
 import useGetScreenSize from "@hooks/useGetScreenSize";
 import * as S from "./Header.styled";
+import HeaderItemWithSub from "./_atom/HeaderItemWithSub";
 
-import HeaderSubLinks from "./_atom/HeaderSubLinks";
-
-export interface HeaderLink {
+export interface HeaderItem {
   title: string;
   url?: string;
 
@@ -14,7 +13,7 @@ export interface HeaderLink {
 }
 
 const Header = () => {
-  const headerList: HeaderLink[] = [
+  const headerLiteral: HeaderItem[] = [
     {
       title: "경험",
       url: "/experiences",
@@ -38,25 +37,27 @@ const Header = () => {
   return (
     <>
       <S.HeaderPadding />
-      <S.HeaderWrapper>
-        {/* 상단 네비게이터 */}
-        <S.HeaderMenuWrapper className={screenType}>
-          <S.HeaderLink to="/">portfolio</S.HeaderLink>
 
-          <S.HeaderContentWrapper>
-            {headerList.map((list) =>
-              list.subLinks ? (
-                <HeaderSubLinks link={list} />
+      <S.HeaderBackgroundWrapper>
+        {/* 상단 네비게이터 */}
+        <S.HeaderWrapper className={screenType}>
+          <S.HeaderButton to="/">portfolio</S.HeaderButton>
+
+          <S.HeaderMenuWrapper>
+            {headerLiteral.map((item, index) =>
+              item.subLinks ? (
+                // 아이템 내 서브링크가 있는 경우
+                <HeaderItemWithSub key={index} item={item} />
               ) : (
-                <S.HeaderLink key={list.title} to={list.url ?? ""}>
-                  {list.title}
-                </S.HeaderLink>
+                // 아이템 . 내서브링크가 없는 경우
+                <S.HeaderButton key={index} to={item.url ?? ""}>
+                  {item.title}
+                </S.HeaderButton>
               )
             )}
-          </S.HeaderContentWrapper>
-        </S.HeaderMenuWrapper>
-        {/* 상단 네비게이터 */}
-      </S.HeaderWrapper>
+          </S.HeaderMenuWrapper>
+        </S.HeaderWrapper>
+      </S.HeaderBackgroundWrapper>
     </>
   );
 };
