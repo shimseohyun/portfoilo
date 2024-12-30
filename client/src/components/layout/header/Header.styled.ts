@@ -1,5 +1,6 @@
 import { animateSlideUp } from "@styles/animation";
 import { defaultFontSetting, defaultHorzontalSetting } from "@styles/default";
+import theme from "@styles/theme";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
@@ -41,8 +42,13 @@ const headerButtonStyle = css`
   padding: 0.75rem 0;
 `;
 
-export const HeaderButton = styled(Link)`
+interface HeaderButtonProps {
+  $isCurrent: boolean;
+}
+export const HeaderButton = styled(Link)<HeaderButtonProps>`
   ${headerButtonStyle}
+  color: ${({ theme, $isCurrent }) =>
+    $isCurrent ? theme.colors.font.head : theme.colors.font.body_disable};
 `;
 
 export const HeaderItemWithSubButton = styled.div`
@@ -55,7 +61,9 @@ export const HeaderItemWithSubButton = styled.div`
   & > img {
     width: 1.5rem;
     height: 1.5rem;
+    opacity: 50%;
   }
+  color: ${({ theme }) => theme.colors.font.body_disable};
 `;
 
 // 헤더의 서브 버튼의 요소들

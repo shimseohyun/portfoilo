@@ -1,6 +1,7 @@
 import useGetScreenSize from "@hooks/useGetScreenSize";
 import * as S from "./Header.styled";
 import HeaderItemWithSub from "./_atom/HeaderItemWithSub";
+import { useLocation } from "react-router-dom";
 
 export interface HeaderItem {
   title: string;
@@ -13,6 +14,8 @@ export interface HeaderItem {
 }
 
 const Header = () => {
+  const location = useLocation();
+
   const headerLiteral: HeaderItem[] = [
     {
       title: "경험",
@@ -41,7 +44,9 @@ const Header = () => {
       <S.HeaderBackgroundWrapper>
         {/* 상단 네비게이터 */}
         <S.HeaderWrapper className={screenType}>
-          <S.HeaderButton to="/">portfolio</S.HeaderButton>
+          <S.HeaderButton $isCurrent={true} to="/">
+            portfolio
+          </S.HeaderButton>
 
           <S.HeaderMenuWrapper>
             {headerLiteral.map((item, index) =>
@@ -50,7 +55,11 @@ const Header = () => {
                 <HeaderItemWithSub key={index} item={item} />
               ) : (
                 // 아이템 . 내서브링크가 없는 경우
-                <S.HeaderButton key={index} to={item.url ?? ""}>
+                <S.HeaderButton
+                  key={index}
+                  to={item.url ?? ""}
+                  $isCurrent={location.pathname === item.url}
+                >
                   {item.title}
                 </S.HeaderButton>
               )
