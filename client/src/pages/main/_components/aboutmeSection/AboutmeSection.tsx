@@ -7,7 +7,10 @@ import useVisibility from "@hooks/useVisibility";
 import HighlightedText from "@components/highlightedText/HighlightedText";
 import { useEffect } from "react";
 import useIndex from "@hooks/useIndex";
-import { ABOUTME_SECTION_DESCRIPTION, ABOUTME_SECTION_INFO } from "./aboutme";
+import {
+  ABOUTME_SECTION_DESCRIPTION,
+  ABOUTME_SECTION_INFO,
+} from "@constants/aboutme";
 
 const AboutmeSection = () => {
   const highlightColor = ABOUTME_SECTION_DESCRIPTION.highlightColor;
