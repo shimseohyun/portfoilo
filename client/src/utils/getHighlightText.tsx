@@ -1,42 +1,62 @@
-interface getHighlightedTextProps {
+import styled from "styled-components";
+
+import { animateHighlightText } from "@styles/animation";
+
+interface GetHighlightedTextProps {
   text: string;
-  delay: number;
+
+  prevTextLength?: number;
+  readingTime?: number;
+  highlightedColor: string;
 }
 
-const getHighlightedText: React.FC<getHighlightedTextProps> = ({
-  text,
-  delay,
-}) => {
+const getHighlightedText = (props: GetHighlightedTextProps) => {
+  const {
+    text,
+    highlightedColor,
+    prevTextLength = 0,
+    readingTime = 0.04,
+  } = props;
+  let textLength = prevTextLength;
+
   const paragraphs = text.split("\n");
+
+  // 홀수 인덱스일 경우 하이라이트 처리
+  const isHighlightedText = (index: number) => index % 2 === 1;
+
+  const getDuration = (text: string) => {
+    return text.length * readingTime;
+  };
+  const getDelay = (): number => {
+    return textLength * readingTime;
+  };
+
   return (
     <>
       {paragraphs.map((paragraph, idx) => {
         const parts = paragraph.split("|$");
 
         return (
-          <div key={idx}>
-            {/* 각 줄에 고유한 key를 부여 */}
+          <ParagrahWrapper key={idx}>
             {parts.map((part, index) => {
-              // 홀수 인덱스일 경우 하이라이트 처리
-              if (index % 2 === 1) {
+              if (index !== 0) textLength += part.length;
+
+              if (isHighlightedText(index)) {
                 return (
-                  <span
-                    className="highlight"
+                  <HighLightedText
                     key={index}
-                    style={{
-                      animationDelay: `${
-                        (Math.floor(index / 2) + idx * 3) * 1.2 + delay * 3
-                      }s`,
-                    }}
+                    $highlightColor={highlightedColor}
+                    $animationDelay={getDelay()}
+                    $animationDuration={getDuration(part)}
                   >
                     {part}
-                  </span>
+                  </HighLightedText>
                 );
+              } else {
+                return <span key={index}>{part}</span>;
               }
-              // 기본 텍스트는 그냥 표시
-              return <span key={index}>{part}</span>;
             })}
-          </div>
+          </ParagrahWrapper>
         );
       })}
     </>
@@ -44,3 +64,32 @@ const getHighlightedText: React.FC<getHighlightedTextProps> = ({
 };
 
 export default getHighlightedText;
+
+interface HighlightedTextProps {
+  $highlightColor: string;
+  $animationDuration: number;
+  $animationDelay: number;
+}
+
+const ParagrahWrapper = styled.div`
+  padding: 0.25rem 0;
+`;
+const HighLightedText = styled.span<HighlightedTextProps>`
+  background: linear-gradient(
+    to right,
+    transparent 50%,
+    ${({ $highlightColor }) => $highlightColor} 50%
+  );
+  background-size: 200%;
+
+  .non-visible,
+  .non-visible & {
+    animation: none !important;
+  }
+
+  .visible & {
+    animation: ${animateHighlightText} ease-out forwards;
+    animation-duration: ${({ $animationDuration }) => $animationDuration}s;
+    animation-delay: ${({ $animationDelay }) => $animationDelay}s;
+  }
+`;
