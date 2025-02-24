@@ -34,14 +34,7 @@ const AboutmeSection = () => {
         <S.AboutmeSectionPortfolioInfo>
           <h3>
             {ABOUTME_SECTION_INFO.description.map((text, index) => {
-              return (
-                <>
-                  {text}
-                  {index === ABOUTME_SECTION_INFO.description.length - 1 || (
-                    <br />
-                  )}
-                </>
-              );
+              return <span key={index}>{text}</span>;
             })}
           </h3>
           <p>{ABOUTME_SECTION_INFO.role}</p>
@@ -66,6 +59,7 @@ const AboutmeSection = () => {
               .length;
         return (
           <S.AboutmeSectionDescrptionWrapper
+            key={index}
             style={{ animationDelay: `${index * 1 + 0.5}s` }}
           >
             <p>{description.title}</p>
