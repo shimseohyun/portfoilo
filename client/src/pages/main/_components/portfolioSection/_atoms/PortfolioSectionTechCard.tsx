@@ -28,6 +28,7 @@ const PortfolioSectionTechCard = ({
   // 화면에 보일 때 true로 설정
   const { ref, isVisible } = useVisibility();
 
+  let textLength = 0;
   return (
     <S.PortfolioSectionTechCardWrapper
       className={isVisible ? "visible" : "non-visible"}
@@ -56,16 +57,21 @@ const PortfolioSectionTechCard = ({
           )}
 
           <ul>
-            {props.descriptions.map((desc, idx) => (
-              <li key={idx}>
-                <h3>{desc.subTitle}</h3>
-                <HighlightedText
-                  text={desc.description}
-                  highlightColor={props.mainColor}
-                  delay={idx}
-                />
-              </li>
-            ))}
+            {props.descriptions.map((desc, idx) => {
+              if (idx !== 0) {
+                textLength += props.descriptions[idx - 1].description.length;
+              }
+              return (
+                <li key={idx}>
+                  <h3>{desc.subTitle}</h3>
+                  <HighlightedText
+                    text={desc.description}
+                    highlightColor={props.mainColor}
+                    prevTextLength={textLength}
+                  />
+                </li>
+              );
+            })}
           </ul>
         </S.PortfolioSectionTechCardDescription>
       )}
